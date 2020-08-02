@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  quizee.api:
+    image: ${DOCKER_REGISTRY-}quizeeapi
+    build:
+      context: .
+      dockerfile: Quizee.API/Dockerfile
+    networks: 
+      - quizee-net
+
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    networks: 
+      - quizee-net
+
+networks:
+  quizee-net:
+    driver: bridge

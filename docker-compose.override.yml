@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  quizee.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  mysql:
+    environment:
+      MYSQL_ROOT_PASSWORD: WeevYU%;drwyx7?<
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${APPDATA}/MySQL/data:/var/lib/mysql
